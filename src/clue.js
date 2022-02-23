@@ -119,7 +119,6 @@ function selectRandom(array) {
 
   // on récupère la longueur du tableau => elements
   let max = array.length;
-
   // On tire un nombre au hasard compris dans la longueur du tableau
   let dice = Math.floor( Math.random() * max );
   // On applique ce nombre à un indice du tableau
@@ -127,14 +126,35 @@ function selectRandom(array) {
 
 }
 
-function pickMystery() {}
+function pickMystery() {
+  let mysterySet = {};
+  mysterySet.suspect = selectRandom(suspectsArray);
+  mysterySet.weapon = selectRandom(weaponsArray);
+  mysterySet.room = selectRandom(roomsArray);
+  
+  return mysterySet;
+  
+}
 
+console.log("----PICK MYSTERY RETURNED OBJECT-----")
+console.log(pickMystery());
+console.log(pickMystery().suspect.firstName);
 
 // ITERATION 3
 
-function revealMystery() {}
+function revealMystery(mysterySet) {
 
+  const firstName = mysterySet.suspect.firstName;
+  const lastName = mysterySet.suspect.lastName;
+  const weapon = mysterySet.weapon.name;
+  const room = mysterySet.room.name;
 
+  let revealMessage = `${firstName} ${lastName} killed Mr. Boddy using the ${weapon} in the ${room}!`;
+  // <FIRST NAME> <LAST NAME> killed Mr. Boddy using the <WEAPON> in the <ROOM>!
+
+  return revealMessage;
+}
+console.log(revealMystery(pickMystery()));
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
