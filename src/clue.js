@@ -154,6 +154,7 @@ function revealMystery(mysterySet) {
 
   return revealMessage;
 }
+console.log("-- REVEAL MESSAGE --");
 console.log(revealMystery(pickMystery()));
 
 // The following is required to make unit tests work.
